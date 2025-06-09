@@ -1,0 +1,26 @@
+
+version: 2
+
+models:
+    - name: my_first_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+              # Existen más validaciones (accepted_values, relationships)
+    - name: my_second_dbt_model
+      # Test a nivel de tabla
+      tests:
+        - dbt_expectations.expect_table_column_count_to_equal:
+           value: 1
+      description: "A starter dbt model"
+      # Test a nivel de columna 
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
