@@ -1,5 +1,5 @@
 version: 2
-
+# Aqui se controlan las fuentes
 sources:
   - name: raw
     schema: stackoverflow #Dataset name - BigQuery

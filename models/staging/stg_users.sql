@@ -1,3 +1,4 @@
+-- Especificación de carga incremental
 {{ config(materialized="incremental") }}
 
 with
@@ -15,7 +16,7 @@ with
 
 select *
 from source
+-- Lógica para la carga incremental
 {% if is_incremental() %}
--- this filter will only be applied on an incremental run
 where creation_date > (select max(creation_date) from {{ this }})
 {% endif %}

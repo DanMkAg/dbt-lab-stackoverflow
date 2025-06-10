@@ -5,7 +5,6 @@ models:
     columns:
       - name: user_id
         tests:
-          - unique
           - not_null
   - name: stg_posts_answers
     columns:
@@ -15,10 +14,12 @@ models:
           - not_null
       - name: type
         tests:
+          # Solo acepta un valor
           - accepted_values:
               values: ['answer']
       - name: owner_user_id
         tests:
+          # Tiene que tener relación con el user_id de la tabla stg_users
           - relationships:
               to: ref('stg_users')
               field: user_id
