@@ -11,6 +11,7 @@ with
                     created_at
                 from {{ ref("stg_posts_questions") }}
             ),
+            -- Hace como una especie de unpivot con el resultado del "split"
             unnest(tags) tag
         where accepted_answer_id is not null
     )
