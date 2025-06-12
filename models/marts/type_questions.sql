@@ -6,5 +6,6 @@ select
 from {{ ref("stg_posts_questions") }}
 where
     created_at < (select max(created_at) from {{ ref("stg_posts_questions") }})
+-- Agrupa y ordena por el primer y segundo atributo del select o sea (year_question y ends_with_question)
 group by 1, 2
 order by 1, 2
